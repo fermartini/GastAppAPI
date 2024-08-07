@@ -1,0 +1,13 @@
+@GastAppAPI_HostAddress_Local = http://localhost:5042
+@GastAppAPI_HostAddress_Network = http://192.168.X.X:5042
+
+# Prueba local
+GET {{GastAppAPI_HostAddress_Local}}/weatherforecast/
+Accept: application/json
+
+###
+
+# Prueba desde otros dispositivos en la misma red
+GET {{GastAppAPI_HostAddress_Network}}/weatherforecast/
+Accept: application/json
+  
