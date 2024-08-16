@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
         builder => builder
             .WithOrigins("http://localhost:3000",
                          "http://192.168.0.29:3000",
-                         "https://gastapp.netlify.app")  // Reemplaza con tu URL de frontend
+                         "https://gastapp-five.vercel.app")  // Reemplaza con tu URL de frontend
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
@@ -44,7 +44,7 @@ app.UseCors("AllowSpecificOrigin");  // Asegúrate de que esté aquí
 
 // Apply security headers
 app.Use(async (context, next) =>
-{
+{   
     context.Response.Headers.Add("Cross-Origin-Opener-Policy", "same-origin");
     context.Response.Headers.Add("Cross-Origin-Embedder-Policy", "require-corp");
     await next();
