@@ -39,8 +39,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowSpecificOrigin");
+// Apply CORS policy
+app.UseCors("AllowSpecificOrigin");  // Asegúrate de que esté aquí
 
+// Apply security headers
 app.Use(async (context, next) =>
 {
     context.Response.Headers.Add("Cross-Origin-Opener-Policy", "same-origin");
@@ -49,6 +51,9 @@ app.Use(async (context, next) =>
 });
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();  // Si usas archivos estáticos
+app.UseRouting();
+app.UseAuthentication();  // Si usas autenticación
 app.UseAuthorization();
-app.MapControllers();
+app.MapControllers();  // O cualquier otro endpoint
 app.Run();
