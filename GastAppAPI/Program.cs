@@ -15,7 +15,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder => builder
             .WithOrigins("http://localhost:3000",
-                         "http://192.168.0.29:3000")  // Reemplaza con tu URL de frontend
+                         "http://192.168.0.29:3000",
+                         "https://gastapp.netlify.app/")  // Reemplaza con tu URL de frontend
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
