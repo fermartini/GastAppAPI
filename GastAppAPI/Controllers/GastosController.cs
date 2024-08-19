@@ -57,6 +57,21 @@ namespace GastAppAPI.Controllers
             return gastos;
         }
 
+        // GET: api/nombregasto/5
+        [HttpGet("nombregasto/{nombreGastoId}")]
+        public async Task<ActionResult<IEnumerable<Gasto>>> GetNombreGastoId(int nombreGastoId)
+        {
+            var gastos = await _context.Gastos
+                    .Where(g => g.NombreGastoId == nombreGastoId)
+                        .ToListAsync();
+            if (gastos == null)
+            {
+                return NotFound();
+            }
+
+            return gastos;
+        }
+
         // PUT: api/Gastos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

@@ -56,6 +56,21 @@ namespace GastAppAPI.Controllers
             return ingreso;
         }
 
+        // GET: api/Gastos/5
+        [HttpGet("nombreingreso/{nombreIngresoId}")]
+        public async Task<ActionResult<IEnumerable<Ingreso>>> GetIngresoUsuario(int nombreIngresoId)
+        {
+            var ingreso = await _context.Ingresos
+                    .Where(g => g.NombreIngresoId == nombreIngresoId)
+                        .ToListAsync();
+            if (ingreso == null)
+            {
+                return NotFound();
+            }
+
+            return ingreso;
+        }
+
         // PUT: api/Ingresos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
