@@ -16,7 +16,8 @@ builder.Services.AddCors(options =>
         builder => builder
             .WithOrigins("http://localhost:3000",
                          "http://192.168.0.29:3000",
-                         "https://misfinanzasapp.vercel.app")  // Reemplaza con tu URL de frontend
+                         "https://misfinanzasapp.vercel.app",
+                         "https://misfinanzasapp.com/")  // Reemplaza con tu URL de frontend
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
