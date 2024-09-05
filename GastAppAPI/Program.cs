@@ -15,7 +15,6 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder => builder
             .WithOrigins("http://localhost:3000",
-                         "http://192.168.0.29:3000",
                          "https://misfinanzasapp.vercel.app",
                          "https://misfinanzasapp.com")  // Reemplaza con tu URL de frontend
             .AllowAnyMethod()
