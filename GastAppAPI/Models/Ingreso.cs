@@ -26,5 +26,6 @@ namespace GastAppAPI.Models
 
         public string UsuarioId { get; set; }
         // Propiedades de navegación
+        public int? Cobrado { get; set; }
     }
 }
