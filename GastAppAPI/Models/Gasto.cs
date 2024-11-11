@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Metadata.Ecma335;
 
 namespace GastAppAPI.Models
 {
@@ -23,6 +24,6 @@ namespace GastAppAPI.Models
         public int NombreGastoId { get; set; }
         public int TipoGastoId { get; set; }
         public string UsuarioId { get; set; }
-
+        public int? Pagado { get; set; }
     }
 }

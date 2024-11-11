@@ -103,6 +103,42 @@ namespace GastAppAPI.Controllers
             return NoContent();
         }
 
+        // PUT: api/Gastos/5/pagado
+        [HttpPut("{id}/pagado")]
+        public async Task<IActionResult> UpdatePagado(int id)
+        {
+            var gasto = await _context.Gastos.FindAsync(id);
+            if (gasto == null)
+            {
+                return NotFound();
+            }
+
+            // Cambiar el valor de Pagado entre 0 y 1
+            gasto.Pagado = gasto.Pagado == 0 ? 1 : 0;  // Si es 0 lo pone a 1, si es 1 lo pone a 0
+
+            _context.Entry(gasto).Property(g => g.Pagado).IsModified = true;
+
+            try
+            {
+                await _context.SaveChangesAsync();  // Guarda los cambios en la base de datos
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!GastoExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();  // Devuelve una respuesta sin contenido (indicando éxito)
+        }
+
+
+
         // POST: api/Gastos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
